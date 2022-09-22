@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useNavigate } from 'react-router-dom'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -17,13 +18,14 @@ const pages = {
   'Ranking dos Jogadores': {
     path: '/dashboard-score',
     icon: <AdbIcon />,
-  }
+  },
 }
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout']
 
-const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
-  const [anchorElNav, setAnchorElNav]  = React.useState(null)
-  const [anchorElUser, setAnchorElUser]  = React.useState(null)
+function ResponsiveAppBar ({ menuItems = [], logo = '' }) {
+  const navigate = useNavigate()
+  const [anchorElNav, setAnchorElNav] = React.useState(null)
+  const [anchorElUser, setAnchorElUser] = React.useState(null)
 
   const handleOpenNavMenu = event => {
     setAnchorElNav(event.currentTarget)
@@ -32,7 +34,7 @@ const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
     setAnchorElUser(event.currentTarget)
   }
 
-  const handleCloseNavMenu = ) => {
+  const handleCloseNavMenu = () => {
     setAnchorElNav(null)
   }
 
@@ -49,7 +51,7 @@ const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            onClick={() => navigate('/')}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -58,6 +60,7 @@ const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              cursor: 'pointer'
             }}
           >
             Fatec Game
@@ -92,9 +95,24 @@ const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {Object.entries(pages).map(([name, {icon, path}]) => (
+              {Object.entries(pages).map(([name, { icon, path }]) => (
                 <MenuItem key={name} onClick={() => handleCloseNavMenu(path)}>
-                  <Typography textAlign="center">{name}</Typography>
+                  <Typography
+                    textAlign="center"
+                    onClick={() => navigate(path)}
+                    noWrap
+                    component="a"
+                    sx={{
+                      display: {  md: 'flex' },
+                      fontFamily: 'monospace',
+                      fontWeight: 700,
+                      color: 'inherit',
+                      textDecoration: 'none',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    {name}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -103,8 +121,7 @@ const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
+            onClick={() => navigate('/')}
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -114,15 +131,16 @@ const ResponsiveAppBar = ({menuItems = [], logo = ''}) => {
               letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
+              cursor: 'pointer',
             }}
           >
-            LOGO
+            Fatec Game
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {Object.entries(pages).map(([name, {icon, path}]) => (
+            {Object.entries(pages).map(([name, { icon, path }]) => (
               <Button
                 key={name}
-                onClick={handleCloseNavMenu}
+                onClick={() => navigate(path)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {name}
