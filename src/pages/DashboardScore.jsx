@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react'
 import { PlayersCard } from '../components/PlayersCard'
 import { playersScore } from '../services/playersScore'
 
-import '../styles/dashboard-score.scss'
-
 function getPlayersCard(players = []) {
   return players.map((player, i) => (
     <PlayersCard
