@@ -23,7 +23,6 @@ export function PlayersCard(props) {
       <Item>
         <Typography 
           component="b"
-          
         >
           <b>{props.player.name}</b>
         </Typography>
