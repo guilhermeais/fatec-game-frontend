@@ -1,4 +1,4 @@
-import { Grid, Paper} from '@mui/material';
+import { Grid, Paper, Typography} from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -19,10 +19,17 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export function PlayersCard(props) {
   return <>
-    <Grid item xs={6}>
+    <Grid item key={props.key} xs={12} md={6} >
       <Item>
-        <b>{props.player.name}</b>
-         {props.player.score}
+        <Typography 
+          component="b"
+          
+        >
+          <b>{props.player.name}</b>
+        </Typography>
+        <Typography>
+        {props.player.score}
+        </Typography>
       </Item>
     </Grid>
   </>
