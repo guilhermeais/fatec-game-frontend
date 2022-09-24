@@ -19,13 +19,8 @@ export function DashboardScore() {
   const [players, setPlayers] = useState([])
 
   async function getPlayersScore({ playerName } = {}) {
-    if (playerName) {
       const players = await playersScore.getPlayersScore({ playerName })
       setPlayers(players)
-    } else {
-      const players = await playersScore.getPlayersScore({ playerName })
-      setPlayers(players)
-    }
   }
 
   useEffect(() => {
