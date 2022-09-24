@@ -13,10 +13,10 @@ import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
 
 const pages = {
-  'Ranking dos Jogadores': {
-    path: '/dashboard-score',
-    icon: <AdbIcon />,
-  },
+  // 'Ranking dos Jogadores': {
+  //   path: '/dashboard-score',
+  //   icon: <AdbIcon />,
+  // },
 }
 
 function ResponsiveAppBar ({ menuItems = [], logo = '' }) {

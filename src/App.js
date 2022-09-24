@@ -1,17 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { DashboardScore } from './pages/DashboardScore'
 import { LayoutDefault } from './layout/LayoutDefault'
-import { Home } from './pages/Home'
 
 const pages = {
-  'Home': {
-    path: '/',
-    isLogo: true,
-    icon: null,
-    component: Home,
-  },
   'Ranking dos Jogadores': {
-    path: '/dashboard-score',
+    path: '/',
     icon: null,
     component: DashboardScore,
   },
